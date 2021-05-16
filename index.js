@@ -10,8 +10,17 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+function chuckJoke(){
+    axios.get('https://api.icndb.com/jokes/random/')
+    .then(res => {
+        const joke = res.data.value.joke;
+        res.status(200).send(`SERVER RETURNED JOKE: ${joke}`)
+    })
+}
+
 app.get('/', (req, res) => {
     res.status(200).send(`SERVER IS WORKING!`)
+    chuckJoke()
 })
 
 
@@ -54,16 +63,5 @@ app.post('https://api.icndb.com/jokes/random/', (req, res) => {
 			})
 		}
     )
-    // function chuckJoke(){
-    //     axios.get('https://api.icndb.com/jokes/random/')
-    //     .then(res => {
-    //         const joke = res.data.value.joke;
-    //         const params = {
-    //             icon_emoji: ':laughing:'
-    //         };
-    //         bot.postMessageToChannel('general',
-    //         `Chuck Norris: ${joke}`,
-    //         params);
-    //     })
-    // }
+    
 })
