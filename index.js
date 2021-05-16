@@ -10,8 +10,8 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get('https://api.icndb.com/jokes/random/', (req, res) => {
-    res.status(200).send(JSON.stringify(res))
+app.get('/', (req, res) => {
+    res.status(200).send(`SERVER IS WORKING!`)
     console.log(req, res);
 })
 
