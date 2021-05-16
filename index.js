@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-function chuckJoke(){
+function chuckJoke() {
     axios.get('https://api.icndb.com/jokes/random/')
     .then(res => {
         return res.data.value.joke;
@@ -19,10 +19,17 @@ function chuckJoke(){
 }
 
 app.get('/', (req, res) => {
-    // res.status(200).send(`SERVER IS WORKING!`)
-    res.send(chuckJoke())
+    res.status(200).send(`SERVER IS WORKING!`)
     
 })
+
+app.get('/', (req, res) => {
+    let data = chuckJoke()
+    .then(function (data) {
+        res.status(200).send(data)   
+    })
+});
+
 
 
 
