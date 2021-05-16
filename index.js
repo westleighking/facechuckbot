@@ -24,9 +24,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    let data = chuckJoke()
+    let joke = chuckJoke()
     .then(function (data) {
-        res.status(200).send(data)   
+        res.status(200).send(joke)   
     })
 });
 
