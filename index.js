@@ -29,10 +29,10 @@ app.get('/', (req, res) => {
     
 })
 
-app.get('/', (req, res) => {
-    let joke = chuckJoke()
+// app.get('/', (req, res) => {
+//     let joke = chuckJoke()
     
-});
+// });
 
 
 
