@@ -11,13 +11,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('https://api.icndb.com/jokes/random/', (req, res) => {
-	res.status(200).send(JSON.stringify(res))
+    res.status(200).send(JSON.stringify(res))
+    console.log(req, res);
 })
 
 
 
 app.listen(port, () => {
-	console.log(`🌏 Server is running at http://localhost:${port}`)
+	console.log(`Server is running at http://localhost:${port}`)
 })
 
 app.post('https://api.icndb.com/jokes/random/', (req, res) => {
