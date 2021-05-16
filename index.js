@@ -18,11 +18,8 @@ app.listen(port, () => {
 	console.log(`🌏 Server is running at http://localhost:${port}`)
 })
 
-app.post('/getmovie', (req, res) => {
-	const movieToSearch =
-		req.body.queryResult && req.body.queryResult.parameters && req.body.queryResult.parameters.movie
-			? req.body.result.parameters.movie
-			: ''
+app.post('https://api.icndb.com/jokes/random/', (req, res) => {
+	
 
 	const reqUrl = encodeURI(`https://api.icndb.com/jokes/random/`)
 	http.get(
@@ -34,24 +31,24 @@ app.post('/getmovie', (req, res) => {
 			})
 			responseFromAPI.on('end', () => {
                 const joke = JSON.parse(completeResponse)
-				const movie = JSON.parse(completeResponse)
+				// const movie = JSON.parse(completeResponse)
                 console.log(joke);
-				let dataToSend = movieToSearch
-				dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
-					movie.Director
-				} and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
-                }`
+				let dataToSend = joke;
+				// dataToSend = `${movie.Title} was released in the year ${movie.Year}. It is directed by ${
+				// 	movie.Director
+				// } and stars ${movie.Actors}.\n Here some glimpse of the plot: ${movie.Plot}.
+                // }`
 
 				return res.json({
 					fulfillmentText: dataToSend,
-					source: 'getmovie'
+					source: 'icndb'
 				})
 			})
 		},
 		error => {
 			return res.json({
 				fulfillmentText: 'Could not get results at this time',
-				source: 'getmovie'
+				source: 'icndb'
 			})
 		}
     )
