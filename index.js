@@ -8,11 +8,11 @@ const app = express()
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .get('/', (req, res) => res.render('pages/index'))
-    
+
 const port = process.env.PORT || 3000
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+// app.use(express.json())
+// app.use(express.urlencoded({ extended: true }))
 
 function chuckJoke() {
     axios.get('https://api.icndb.com/jokes/random/')
