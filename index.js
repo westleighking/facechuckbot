@@ -5,6 +5,10 @@ const http = require('http')
 require('dotenv').config()
 
 const app = express()
+    .set('views', path.join(__dirname, 'views'))
+    .set('view engine', 'ejs')
+    .get('/', (req, res) => res.render('pages/index'))
+    
 const port = process.env.PORT || 3000
 
 app.use(express.json())
