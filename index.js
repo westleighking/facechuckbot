@@ -13,14 +13,15 @@ app.use(express.urlencoded({ extended: true }))
 function chuckJoke(){
     axios.get('https://api.icndb.com/jokes/random/')
     .then(res => {
-        const joke = res.data.value.joke;
-        res.status(200).send(`SERVER RETURNED JOKE: ${joke}`)
+        return res.data.value.joke;
+        
     })
 }
 
 app.get('/', (req, res) => {
-    res.status(200).send(`SERVER IS WORKING!`)
-    chuckJoke()
+    // res.status(200).send(`SERVER IS WORKING!`)
+    res.send(chuckJoke())
+    
 })
 
 
