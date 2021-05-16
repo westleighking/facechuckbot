@@ -1,0 +1,7 @@
+{
+    "name": "jokebot",
+    "description": "Facebook Chuck Norris Joke Bot",
+    "repository": "https://github.com/westleighking/facechuckbot",
+    "keywords": ["node", "express", "heroku"],
+    "image": "heroku/nodejs"
+  }
