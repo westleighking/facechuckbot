@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('https://api.icndb.com/jokes/random/', (req, res) => {
-	res.status(200).send('Server is working.')
+	res.status(200).send(JSON.stringify(res))
 })
 
 
