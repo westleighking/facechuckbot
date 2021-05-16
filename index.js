@@ -12,8 +12,9 @@ app.use(express.urlencoded({ extended: true }))
 
 function chuckJoke() {
     axios.get('https://api.icndb.com/jokes/random/')
-    .then(res => {
-        return res.data.value.joke;
+    .then(resp => {
+        document.getElementById("jokeArea").innerText = resp.data.value.joke;
+        // return res.data.value.joke;
         
     })
 }
@@ -25,9 +26,7 @@ app.get('/', (req, res) => {
 
 app.get('/', (req, res) => {
     let joke = chuckJoke()
-    .then(function (data) {
-        res.status(200).send(joke)   
-    })
+    
 });
 
 
